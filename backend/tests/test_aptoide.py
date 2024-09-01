@@ -1,4 +1,4 @@
-import falcon # type: ignore
+import falcon
 from falcon import testing
 import pytest
 

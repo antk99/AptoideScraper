@@ -1,5 +1,5 @@
-import falcon.asgi # type: ignore
-from resources.aptoide import AptoideResource
+import falcon.asgi
+from src.resources.aptoide import AptoideResource
 
 # Create the Falcon app
 app = falcon.asgi.App(cors_enable=True)

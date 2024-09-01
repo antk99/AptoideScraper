@@ -1,7 +1,7 @@
-import falcon # type: ignore
+import falcon
 import requests
-from webscrapers.aptoide.scraper import AptoideScraper
-from validators.scrapers import validate_aptoide_url
+from src.validators.scrapers import validate_aptoide_url
+from src.webscrapers.aptoide.scraper import AptoideScraper
 
 API_ERROR_RESPONSES: dict[str, tuple[str, dict[str, str]]] = {
     'missing_url': (falcon.HTTP_400, {'error': '"url" query parameter is required.'}),

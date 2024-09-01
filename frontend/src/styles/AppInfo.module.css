@@ -1,0 +1,27 @@
+.appContainer {
+    padding: 2rem;
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    background-color: #ced4da;
+}
+
+.appInfoContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.appImage {
+    width: 75px;
+    height: 75px;
+    border-radius: 25%;
+}
+
+span {
+    font-weight: bold;
+}

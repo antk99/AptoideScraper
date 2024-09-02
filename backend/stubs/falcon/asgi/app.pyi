@@ -1,0 +1,3 @@
+import falcon.app
+
+class App(falcon.app.App): ...

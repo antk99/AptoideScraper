@@ -96,7 +96,8 @@ class AptoideScraper:
         Returns:
             `str`: The icon URL
         """
-        return tree.xpath(self.xpaths['icon_url'])[0].get('src')
+        result = tree.xpath(self.xpaths['icon_url'])[0].get('src')
+        return result if type(result) == str else ''
     
     def _extract_release_date(self, tree: html.HtmlElement) -> str:
         """
@@ -108,8 +109,9 @@ class AptoideScraper:
         Returns:
             `str`: The release date
         """
-        return tree.xpath(self.xpaths['release_date'])[0].text_content().replace('Release Date: ', '').split(' ')[0]
-    
+        result = tree.xpath(self.xpaths['release_date'])[0].text_content().replace('Release Date: ', '').split(' ')[0]
+        return result if type(result) == str else ''
+
     def _extract_description(self, tree: html.HtmlElement) -> str:
         """
         Extract the description from the webpage by joining the paragraphs.

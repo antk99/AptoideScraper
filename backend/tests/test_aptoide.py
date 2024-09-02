@@ -12,10 +12,10 @@ API_ERROR_RESPONSES = {
 }
 
 @pytest.fixture
-def client():
+def client() -> testing.TestClient:
     return testing.TestClient(app)
 
-def test_GET_aptoide_url_valid(client):
+def test_GET_aptoide_url_valid(client: testing.TestClient) -> None:
     url = 'https://magicabin.en.aptoide.com/app'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
@@ -28,14 +28,14 @@ def test_GET_aptoide_url_valid(client):
     expected_keys = ['name', 'icon_url', 'version', 'num_downloads', 'release_date', 'description']
     assert all(key in result and type(result[key]) == str for key in expected_keys)
 
-def test_GET_aptoide_url_missing_url_parameter(client):
+def test_GET_aptoide_url_missing_url_parameter(client: testing.TestClient) -> None:
     response = client.simulate_get('/api/aptoide')
     result = response.json
 
     expected = API_ERROR_RESPONSES['missing_url']
     assert response.status == expected[0] and result == expected[1]
 
-def test_GET_aptoide_url_invalid_missing_https(client):
+def test_GET_aptoide_url_invalid_missing_https(client: testing.TestClient) -> None:
     url = 'magicabin.en.aptoide.com/app'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
@@ -44,7 +44,7 @@ def test_GET_aptoide_url_invalid_missing_https(client):
     expected = API_ERROR_RESPONSES['invalid_url']
     assert response.status == expected[0] and result == expected[1]
 
-def test_GET_aptoide_url_invalid_missing_language(client):
+def test_GET_aptoide_url_invalid_missing_language(client: testing.TestClient) -> None:
     url = 'https://magicabin.aptoide.com/'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
@@ -53,7 +53,7 @@ def test_GET_aptoide_url_invalid_missing_language(client):
     expected = API_ERROR_RESPONSES['invalid_url']
     assert response.status == expected[0] and result == expected[1]
 
-def test_GET_aptoide_url_invalid_nonexistent_app(client):
+def test_GET_aptoide_url_invalid_nonexistent_app(client: testing.TestClient) -> None:
     url = 'https://fakeappdoesnotexist.en.aptoide.com/app'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
@@ -62,7 +62,7 @@ def test_GET_aptoide_url_invalid_nonexistent_app(client):
     expected = API_ERROR_RESPONSES['not_found']
     assert response.status == expected[0] and result == expected[1]
 
-def test_GET_aptoide_url_invalid_nonexistent_language(client):
+def test_GET_aptoide_url_invalid_nonexistent_language(client: testing.TestClient) -> None:
     url = 'https://magicabin.fakelanguage123.aptoide.com/app'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
@@ -71,7 +71,7 @@ def test_GET_aptoide_url_invalid_nonexistent_language(client):
     expected = API_ERROR_RESPONSES['invalid_url']
     assert response.status == expected[0] and result == expected[1]
 
-def test_GET_aptoide_url_invalid_other_url(client):
+def test_GET_aptoide_url_invalid_other_url(client: testing.TestClient) -> None:
     url = 'https://www.google.com'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
@@ -80,7 +80,7 @@ def test_GET_aptoide_url_invalid_other_url(client):
     expected = API_ERROR_RESPONSES['invalid_url']
     assert response.status == expected[0] and result == expected[1]
 
-def test_GET_aptoide_url_not_url(client):
+def test_GET_aptoide_url_not_url(client: testing.TestClient) -> None:
     url = 'SELECT * FROM users'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')

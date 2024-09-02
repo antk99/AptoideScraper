@@ -19,7 +19,10 @@ python3 --version
 Copy-paste the following into your terminal to run the type checker, tests and server all at once, or follow the steps individually below:
 
 ```bash
-# Run from backend/
+# Run from root folder /
+
+# Change to backend directory
+cd backend
 
 # Initialize virtual environment
 python3 -m venv .venv

@@ -60,7 +60,7 @@ python3 run.py server
 
 ```bash
 # Run from backend/src/
-uvicorn app:app --reload
+python3 -m uvicorn app:app --reload
 ```
 
 #### Tests
@@ -76,7 +76,7 @@ python3 run.py test
 
 ```bash
 # Run from backend/
-pytest tests
+python3 -m pytest tests
 ```
 
 #### Type Checker
@@ -92,8 +92,8 @@ python3 run.py mypy
 
 ```bash
 # Run from backend/
-mypy src
-mypy tests
+python3 -m mypy src
+python3 -m mypy tests
 ```
 
 ### Frontend

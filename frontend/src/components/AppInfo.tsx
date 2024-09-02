@@ -1,16 +1,8 @@
 import styles from "../styles/AppInfo.module.css";
+import { GetAptoideAppInfoResponse } from "../types/api";
 
-interface AppInfoProps {
-    name: string;
-    icon_url: string;
-    version?: string;
-    num_downloads?: string;
-    release_date?: string;
-    description?: string;
-}
-
-export const AppInfo = (props: AppInfoProps) => {
-    const descriptionParagraphs = props.description?.split("\n");
+export const AppInfo = (props: GetAptoideAppInfoResponse) => {
+    const descriptionParagraphs = props.description ? props.description.split("\n") : [];
 
     return (
         <div className={styles.appContainer}>

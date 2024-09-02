@@ -1,13 +1,5 @@
-import { useEffect } from "react";
 import styles from "../styles/SearchBar.module.css";
-
-interface SearchBarProps {
-    query: string;
-    setQuery: React.Dispatch<React.SetStateAction<string>>;
-    inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
-    pasteIconProps?: React.ImgHTMLAttributes<HTMLImageElement>;
-    searchIconProps: React.ImgHTMLAttributes<HTMLImageElement>;
-}
+import { SearchBarProps } from "../types/search";
 
 export const SearchBar = (props: SearchBarProps) => {
     return (

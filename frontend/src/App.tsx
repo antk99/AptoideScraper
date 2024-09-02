@@ -4,19 +4,11 @@ import useFetch from "./hooks/useFetch";
 import styles from "./styles/App.module.css";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import { SearchBar } from "./components/SearchBar";
-
-interface APIResponse {
-    name: string;
-    icon_url: string;
-    version: string;
-    num_downloads: string;
-    release_date: string;
-    description: string;
-}
+import { GetAptoideAppInfoResponse } from "./types/api";
 
 export const App = () => {
     const [url, setUrl] = useState<string>("");
-    const { data, error, isLoading, fetchData } = useFetch<APIResponse>();
+    const { data, error, isLoading, fetchData } = useFetch<GetAptoideAppInfoResponse>();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value);
 

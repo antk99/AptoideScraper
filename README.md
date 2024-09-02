@@ -27,14 +27,14 @@ python3 -m venv .venv
 
 Whenever interacting with the backend, ensure your terminal is using the backend's virtual environment:
 
+* Windows:
 ```bash
-# Windows
 # Run from backend/
 .venv\Scripts\activate
 ```
 
+* Linux/Unix/MacOs
 ```bash
-# Linux/Unix/MacOs
 # Run from backend/
 source .venv/bin/activate
 ```

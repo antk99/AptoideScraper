@@ -16,26 +16,6 @@ python3 --version
 
 ## Instructions
 
-Copy-paste the following into your terminal to run the type checker, tests and server all at once, or follow the steps individually below:
-
-```bash
-# Run from root folder /
-
-# Change to backend directory
-cd backend
-
-# Initialize virtual environment
-python3 -m venv .venv
-python3 -m pip install -r requirements.txt
-
-# Activate virtual environment
-source .venv/bin/activate # Linux/Unix/MacOs
-# .venv\Scripts\activate # Use this for Windows
-
-# Run type checker, tests and server
-python3 run.py all &
-```
-
 ### Backend
 
 To run the backend server, start by initializing a virtual environment and installing the required packages:

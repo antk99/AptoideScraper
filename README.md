@@ -23,7 +23,6 @@ To run the backend server, start by initializing a virtual environment and insta
 ```bash
 # Run from backend/
 python3 -m venv .venv
-python3 -m pip install -r requirements.txt
 ```
 
 Whenever interacting with the backend, ensure your terminal is using the backend's virtual environment:
@@ -41,6 +40,12 @@ source .venv/bin/activate
 ```
 
 Your terminal prompt should indicate the virtual environment is active by displaying `.venv`.
+
+Install the required packages from `requirements.txt`:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
 
 #### Server
 

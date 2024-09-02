@@ -15,7 +15,7 @@ class AptoideScraper:
         Initialize the Aptoide scraper with the xpaths file.
 
         Args:
-            `xpaths_file` (str): The path to the xpaths file. Default is the xpaths.json file in the same directory.
+            xpaths_file (str): The path to the xpaths file. Default is the xpaths.json file in the same directory.
         """
         try:   
             with open(xpaths_file_path, 'r') as f:
@@ -33,13 +33,13 @@ class AptoideScraper:
         Query the Aptoide URL and return the response.
 
         Args:
-            `url` (str): The Aptoide URL
+            url (str): The Aptoide URL
 
         Returns:
-            `requests.Response`: The response object
+            requests.Response: The response object
 
         Raises:
-            `requests.exceptions.RequestException`: If a request error occurs
+            requests.exceptions.RequestException: If a request error occurs
         """
         response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
         return response
@@ -49,10 +49,10 @@ class AptoideScraper:
         Extract the app information from the Aptoide webpage.
 
         Args:
-            `response_content` (str): The response content of the webpage from a `requests.Response` object.
+            response_content (str): The response content of the webpage from a requests.Response object.
 
         Returns:
-            `dict`: The app information extracted from the webpage or None if an error occurs.
+            dict: The app information extracted from the webpage or None if an error occurs.
         """
         try:
             tree: html.HtmlElement = html.fromstring(response_content)
@@ -85,16 +85,16 @@ class AptoideScraper:
         except Exception as e:
             print('ERROR: Aptoide scraper failed.\n', e)
             return None
-    
+
     def _extract_icon_url(self, tree: html.HtmlElement) -> str:
         """
         Extract the icon URL from the webpage.
 
         Args:
-            `tree` (html.HtmlElement): The webpage tree
+            tree (html.HtmlElement): The webpage tree
 
         Returns:
-            `str`: The icon URL
+            str: The icon URL
         """
         result = tree.xpath(self.xpaths['icon_url'])[0].get('src')
         return result if type(result) == str else ''
@@ -104,10 +104,10 @@ class AptoideScraper:
         Extract the release date from the webpage.
 
         Args:
-            `tree` (html.HtmlElement): The webpage tree
+            tree (html.HtmlElement): The webpage tree
 
         Returns:
-            `str`: The release date
+            str: The release date
         """
         result = tree.xpath(self.xpaths['release_date'])[0].text_content().replace('Release Date: ', '').split(' ')[0]
         return result if type(result) == str else ''
@@ -117,10 +117,10 @@ class AptoideScraper:
         Extract the description from the webpage by joining the paragraphs.
 
         Args:
-            `tree` (html.HtmlElement): The webpage tree
+            tree (html.HtmlElement): The webpage tree
 
         Returns:
-            `str`: The description text joined with newlines
+            str: The description text joined with newlines
         """
         # Join the paragraphs of the description with newlines and remove the last newline
         return ''.join(

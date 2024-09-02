@@ -13,7 +13,7 @@ API_ERROR_RESPONSES: dict[str, tuple[str, dict[str, str]]] = {
 
 class AptoideResource:
     def __init__(self) -> None:
-        self.scraper: AptoideScraper = AptoideScraper() # Initialize the AptoideScraper
+        self._scraper: AptoideScraper = AptoideScraper() # Initialize the AptoideScraper
 
     async def on_get(self, req: falcon.Request, res: falcon.Response) -> None:
         try:
@@ -34,7 +34,7 @@ class AptoideResource:
                 res.status, res.media = API_ERROR_RESPONSES['not_found']
                 return
 
-            data = self.scraper.get_info(response.content)
+            data = self._scraper.get_info(response.content)
             if data is None:
                 res.status, res.media = API_ERROR_RESPONSES['server_error']
                 return

@@ -7,7 +7,6 @@ def run_server() -> None:
     os.chdir('src')
     subprocess.run(['uvicorn', 'app:app', '--reload'])
 
-
 def run_tests() -> None:
     print("Running tests...")
     subprocess.run([sys.executable, '-m', 'pytest', 'tests'])

@@ -112,7 +112,7 @@ class AptoideScraper:
         Returns:
             str: The release date
         """
-        result = tree.xpath(self.xpaths['release_date'])[0].text_content().replace('Release Date: ', '').split(' ')[0]
+        result = tree.xpath(self.xpaths['release_date'])[0].text_content().split(': ')[1].split(' ')[0]
         return result if type(result) == str else ''
 
     def _extract_description(self, tree: html.HtmlElement) -> str:

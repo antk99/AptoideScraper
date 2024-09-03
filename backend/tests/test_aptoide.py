@@ -16,7 +16,7 @@ def client() -> testing.TestClient:
     return testing.TestClient(app)
 
 def test_GET_aptoide_url_valid(client: testing.TestClient) -> None:
-    url = 'https://magicabin.en.aptoide.com/app'
+    url = 'https://instagram.en.aptoide.com/app'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
     result = response.json
@@ -36,7 +36,7 @@ def test_GET_aptoide_url_missing_url_parameter(client: testing.TestClient) -> No
     assert response.status == expected[0] and result == expected[1]
 
 def test_GET_aptoide_url_invalid_missing_https(client: testing.TestClient) -> None:
-    url = 'magicabin.en.aptoide.com/app'
+    url = 'instagram.en.aptoide.com/app'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
     result = response.json
@@ -45,7 +45,7 @@ def test_GET_aptoide_url_invalid_missing_https(client: testing.TestClient) -> No
     assert response.status == expected[0] and result == expected[1]
 
 def test_GET_aptoide_url_invalid_missing_language(client: testing.TestClient) -> None:
-    url = 'https://magicabin.aptoide.com/'
+    url = 'https://instagram.aptoide.com/'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
     result = response.json
@@ -63,7 +63,7 @@ def test_GET_aptoide_url_invalid_nonexistent_app(client: testing.TestClient) -> 
     assert response.status == expected[0] and result == expected[1]
 
 def test_GET_aptoide_url_invalid_nonexistent_language(client: testing.TestClient) -> None:
-    url = 'https://magicabin.fakelanguage123.aptoide.com/app'
+    url = 'https://instagram.fakelanguage123.aptoide.com/app'
 
     response = client.simulate_get(f'/api/aptoide?url={url}')
     result = response.json

@@ -20,7 +20,7 @@ def client() -> testing.TestClient:
 def test_GET_aptoide_url_valid(client: testing.TestClient) -> None:
     url = 'https://instagram.en.aptoide.com/app'
 
-    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}={url}')
+    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}{url}')
     result = response.json
 
     assert response.status == falcon.HTTP_200
@@ -41,7 +41,7 @@ def test_GET_aptoide_url_missing_url_parameter(client: testing.TestClient) -> No
 def test_GET_aptoide_url_invalid_missing_https(client: testing.TestClient) -> None:
     url = 'instagram.en.aptoide.com/app'
 
-    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}={url}')
+    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}{url}')
     result = response.json
 
     expected = API_ERROR_RESPONSES['invalid_url']
@@ -50,7 +50,7 @@ def test_GET_aptoide_url_invalid_missing_https(client: testing.TestClient) -> No
 def test_GET_aptoide_url_invalid_missing_language(client: testing.TestClient) -> None:
     url = 'https://instagram.aptoide.com/'
 
-    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}={url}')
+    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}{url}')
     result = response.json
 
     expected = API_ERROR_RESPONSES['invalid_url']
@@ -59,7 +59,7 @@ def test_GET_aptoide_url_invalid_missing_language(client: testing.TestClient) ->
 def test_GET_aptoide_url_invalid_nonexistent_app(client: testing.TestClient) -> None:
     url = 'https://fakeappdoesnotexist.en.aptoide.com/app'
 
-    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}={url}')
+    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}{url}')
     result = response.json
 
     expected = API_ERROR_RESPONSES['not_found']
@@ -68,7 +68,7 @@ def test_GET_aptoide_url_invalid_nonexistent_app(client: testing.TestClient) -> 
 def test_GET_aptoide_url_invalid_nonexistent_language(client: testing.TestClient) -> None:
     url = 'https://instagram.fakelanguage123.aptoide.com/app'
 
-    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}={url}')
+    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}{url}')
     result = response.json
 
     expected = API_ERROR_RESPONSES['invalid_url']
@@ -77,7 +77,7 @@ def test_GET_aptoide_url_invalid_nonexistent_language(client: testing.TestClient
 def test_GET_aptoide_url_invalid_other_url(client: testing.TestClient) -> None:
     url = 'https://www.google.com'
 
-    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}={url}')
+    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}{url}')
     result = response.json
 
     expected = API_ERROR_RESPONSES['invalid_url']
@@ -86,7 +86,7 @@ def test_GET_aptoide_url_invalid_other_url(client: testing.TestClient) -> None:
 def test_GET_aptoide_url_not_url(client: testing.TestClient) -> None:
     url = 'SELECT * FROM users'
 
-    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}={url}')
+    response = client.simulate_get(f'{GET_APTOIDE_API_BASE_URL}{url}')
     result = response.json
 
     expected = API_ERROR_RESPONSES['invalid_url']

@@ -58,7 +58,10 @@ class AptoideScraper:
             tree: html.HtmlElement = html.fromstring(response_content)
             data = {}
 
+            # HTML elements with custom extraction functions which are not simple text content
             custom_extract = { 'icon_url': self._extract_icon_url, 'release_date': self._extract_release_date, 'description': self._extract_description }
+            
+            # Iterate through the xpaths and extract the data
             for key, value in self.xpaths.items():
                 if key in custom_extract:
                     data[key] = custom_extract[key](tree)
@@ -67,7 +70,7 @@ class AptoideScraper:
                     if isinstance(result, list) and len(result) > 0:
                         element = result[0]
                         if isinstance(element, etree._Element) and hasattr(element, 'text_content'):
-                            data[key] = element.text_content()
+                            data[key] = element.text_content() # Default extraction is text content
                         else:
                             data[key] = str(element)
                     else:

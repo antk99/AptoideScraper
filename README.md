@@ -46,18 +46,19 @@ Install the required packages from `requirements.txt` by running the following f
 python3 -m pip install -r requirements.txt
 ```
 
-#### Server
+#### Type Checker
 
-To run the server, run the following command from the `backend` directory:
+To type check the Python code, run the following command from the `backend` directory:
 
 ```bash
-python3 run.py server
+python3 run.py mypy
 ```
 
-(or you can use `uvicorn` yourself)
+(or you can use `mypy` yourself, but make sure to run the `src` and `tests` tests separately)
 
 ```bash
-python3 -m uvicorn app:app --reload
+python3 -m mypy src
+python3 -m mypy tests
 ```
 
 #### Tests
@@ -74,19 +75,18 @@ python3 run.py test
 python3 -m pytest tests
 ```
 
-#### Type Checker
+#### Server
 
-To type check the Python code, run the following command from the `backend` directory:
+To run the server, run the following command from the `backend` directory:
 
 ```bash
-python3 run.py mypy
+python3 run.py server
 ```
 
-(or you can use `mypy` yourself, but make sure to run the `src` and `tests` tests separately)
+(or you can use `uvicorn` yourself)
 
 ```bash
-python3 -m mypy src
-python3 -m mypy tests
+python3 -m uvicorn app:app --reload
 ```
 
 ### Frontend

@@ -129,5 +129,3 @@ class AptoideScraper:
         return ''.join(
             [f'{s.text_content()}\n' for s in tree.xpath(self.xpaths['description'])[0]]
         )[:-1]
-
-    

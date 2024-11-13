@@ -2,6 +2,8 @@
 
 This project includes a Falcon REST API and a React web application for webscraping and displaying information about Android apps from [Aptoide](https://en.aptoide.com/).
 
+![image](https://github.com/user-attachments/assets/c3ffd789-7054-4907-8b26-89f2650c1cca)
+
 ## Installation
 
 Before running the application, ensure you have the following installed:
